@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimchasEF.Web", "SimchasEF.Web\SimchasEF.Web.csproj", "{13AEE52F-7589-48C3-A74A-332CAC9F61B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimchasEF.Data", "SimchasEF.Data\SimchasEF.Data.csproj", "{2D781A9B-6B11-4832-9511-DC1445AEF028}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13AEE52F-7589-48C3-A74A-332CAC9F61B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AEE52F-7589-48C3-A74A-332CAC9F61B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AEE52F-7589-48C3-A74A-332CAC9F61B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AEE52F-7589-48C3-A74A-332CAC9F61B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D781A9B-6B11-4832-9511-DC1445AEF028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D781A9B-6B11-4832-9511-DC1445AEF028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D781A9B-6B11-4832-9511-DC1445AEF028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D781A9B-6B11-4832-9511-DC1445AEF028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
