@@ -92,22 +92,24 @@ namespace SimchasEF.Data
             using (var ctx = new SimchaContext(_connectionString))
             {
                 IEnumerable<Contributor> contributors = GetAllContributors();
-                IEnumerable<SimchaContributor> sc = contributors.Select(c => new SimchaContributor
+                IEnumerable<SimchaContributor> sc = contributors.Select(c =>
                 {
-                    Contributor = c,
-                    Contributed = AlreadyContributed(c, id),
-                    SimchaId = id,
-                    Balance = c.Deposits.Sum(d => d.Amount) - c.Contributions.Sum(d => d.Amount),
-                    //Amount = c.Contributions.FirstOrDefault(con => con.SimchaId == id).Amount
-                });
-                foreach (SimchaContributor s in sc)
-                {
-                    if (GetAmountContributed(s.Contributor, id) != null)
+                    var s = new SimchaContributor();
+                    s.Contributor = c;
+                    s.Contributed = AlreadyContributed(c, id);
+                    s.SimchaId = id;
+                    s.Balance = c.Deposits.Sum(d => d.Amount) - c.Contributions.Sum(d => d.Amount);
+                    if (c.Contributions.FirstOrDefault(con => con.SimchaId == id) != null)
                     {
-                        s.Amount = GetAmountContributed(s.Contributor, id).Amount;
+                        s.Amount = c.Contributions.FirstOrDefault(con => con.SimchaId == id).Amount;
                     }
-                }
+                    else
+                    {
+                        s.Amount = 0;
+                    }
+                    return s;
 
+                });
                 return sc;
             }
         }
@@ -117,10 +119,10 @@ namespace SimchasEF.Data
             return contributor.Contributions.Any(c => c.SimchaId == simchaId);
         }
 
-        private Contribution GetAmountContributed(Contributor contributor, int simchaId)
-        {
-            return contributor.Contributions.FirstOrDefault(c => c.SimchaId == simchaId);
-        }
+        //private Contribution GetAmountContributed(Contributor contributor, int simchaId)
+        //{
+        //    return contributor.Contributions.FirstOrDefault(c => c.SimchaId == simchaId);
+        //}
 
         public int GetTotalContributorCount()
         {
